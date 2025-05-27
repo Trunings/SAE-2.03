@@ -28,7 +28,7 @@ body {
     object-fit: cover;
     background-position: center;
     background-attachment: fixed;
-    transition: filter 2s ease;
+    transition: filter 3s ease;
 }
 
 .contenu {
@@ -39,7 +39,7 @@ body {
     margin: 50px auto 0;
     opacity: 0;
     transform: translateY(20px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
+    transition: opacity 2s ease, transform 2s ease;
 }
 
 .contenu h2 {
@@ -184,4 +184,9 @@ body {
 
 .parallax-bg.darkened {
     filter: brightness(0.4);
+}
+
+footer {
+    text-align: center;
+    color: #fff;
 }
