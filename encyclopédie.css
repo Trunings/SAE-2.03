@@ -14,7 +14,7 @@ body {
 }
 
 .header {
-    position: fixed;
+    position: sticky;
     top: 0;
     left: 0;
     width: 100%;
@@ -79,4 +79,8 @@ body {
 
 .header nav a:hover:after {
     width: 100%;
+}
+
+.utilisateur {
+    font-size: 1rem;
 }

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encyclopédie | EncycloNoMi</title>
+    <link rel="stylesheet" href="encyclopédie.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/vnd.icon" href="Images/favicon-16x16.png">
+</head>
+<body>
+    <header class="header">
+        <div class="header-contenu">
+            <div class="titre">EncycloNoMi</div>
+            <nav>
+                <a href="index.php">Accueil</a>
+                <a href="encyclopédie.php">Encyclopédie</a>
+                <a href="aboutme.html">About Me</a>
+            </nav>
+        </div>
+        <div>
+         <form action="encyclopédie.php" method="get"> 
+            <label for="nom"> Rechercher</label>
+            <input type="text" name="nom" id="nom" >
+            <input type="submit" value="Valider">
+            </form>
+        </div>
+    </header>
+
+    <section>
+        <img src="Images/crocodile.png" alt="">
+        <img src="Images/enel.png" alt="">
+        <img src="Images/smoker.png" alt="">
+    </section>
+
+    <?php
+    include('connexion.php');
+if (isset($_GET["nom"]) && !empty($_GET["nom"])) {
+    $search = $_GET["nom"];
+
+    $join_query = "SELECT * 
+        FROM utilisateur_fruit 
+        JOIN fruit_démon ON fruit_démon.id_fruit = utilisateur_fruit.id_fruit
+        JOIN classe ON classe.id_classe = fruit_démon.id_classe 
+        WHERE 
+            prenom_utilisateur LIKE :search 
+            OR nom_classe LIKE :search";
+
+    $stmt = $db-> prepare ($join_query);
+    $stmt->bindValue(':search', '%' . $search . '%', PDO::PARAM_STR);
+    $stmt->execute();
+} else {
+    $stmt = $db->query("SELECT * FROM utilisateur_fruit");
+}
+
+$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+echo '<div class="utilisateur-container">';
+foreach ($result as $row) {
+    echo '<a href="utilisateur.php?id='.$row["id_utilisateur"].'"> <div class="utilisateur"> <h1>'.$row["prenom_utilisateur"].'</h1>
+    <img src = "'.$row["image"].'">';   
+    echo '</div> </a>';
+}
+echo '</div>';
+?>
+</body>

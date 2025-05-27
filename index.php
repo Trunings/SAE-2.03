@@ -13,14 +13,21 @@
     <link rel="icon" type="image/vnd.icon" href="Images/favicon-16x16.png">
 </head>
 <body>
-    <header class="header">
+    <header>
         <div class="header-contenu">
             <div class="titre">EncycloNoMi</div>
             <nav>
                 <a href="#section1">Accueil</a>
-                <a href="encyclopédie.html">Encyclopédie</a>
+                <a href="encyclopédie.php">Encyclopédie</a>
                 <a href="aboutme.html">About Me</a>
             </nav>
+        </div>
+        <div>
+         <form action="encyclopédie.php" method="get"> 
+            <label for="nom"> Rechercher</label>
+            <input type="text" name="nom" id="nom" >
+            <input type="submit" value="Valider">
+            </form>
         </div>
     </header>
     

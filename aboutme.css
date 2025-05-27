@@ -13,14 +13,13 @@ body {
 }
 
 .header {
-    position: fixed;
+    position: sticky;
     top: 0;
     left: 0;
     width: 100%;
     padding: 20px;
-    background-color: rgba(255, 255, 255, 0.7);
+    background-color: rgb(0, 0, 0);
     z-index: 1000;
-    box-shadow: 0 2px 10px rgba(255, 255, 255, 0.3);
 }
 
 .header-contenu {
@@ -80,6 +79,17 @@ body {
     width: 100%;
 }
 
-section {
-    text-decoration: white;
+footer {
+    text-align: center;
+    color: #000000;
+}
+
+
+main {
+    margin-top: 30px;
+}
+
+p {
+    text-align: center;
+    font-weight: 1rem;
 }
