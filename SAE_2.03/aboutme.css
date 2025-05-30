@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    overflow-x: hidden;
+}
+
+header {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    background-color: rgb(0, 0, 0);
+    z-index: 1000;
+}
+
+.header-contenu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.titre{
+    margin-right: auto;
+    color: #fff;
+    text-transform: uppercase;
+    font-family: "Permanent Marker", cursive;
+    font-weight: 400;
+    font-size: 1.8rem;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px rgba(4, 142, 255, 0.7);
+}
+
+header nav {
+    display: flex;
+    justify-content: center;
+}
+
+header nav a {
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+    text-decoration: none;
+    margin: 0 25px;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    letter-spacing: 1px;
+    padding: 5px 0;
+    position: relative;
+}
+
+header nav a:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: #64b5f6;
+    bottom: 0;
+    left: 0;
+    transition: width 0.3s ease;
+}
+
+header nav a:hover {
+    color: #64b5f6;
+}
+
+header nav a:hover:after {
+    width: 100%;
+}
+
+.recherche-header {
+    position: relative;
+    background: white;
+    border-radius: 50px;
+    padding: 1px 14px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    border: 1px solid #e0e0e0;
+    transition: all 0.3s ease;
+    min-width: 300px;
+}
+
+.recherche-header label {
+    display: none;
+}
+
+.recherche-header input[type="text"] {
+    background: transparent;
+    border: none;
+    padding: 8px 12px;
+    font-size: 1rem;
+    outline: none;
+    flex: 1;
+    color: #333;
+}
+
+.recherche-header input[type="text"]::placeholder {
+    color: #626569;
+    font-size: 1rem;
+}
+
+.recherche-header input[type="submit"] {
+    display: none;
+}
+
+footer {
+    text-align: center;
+    color: #000000;
+}
+
+
+main {
+    margin-top: 30px;
+}
+
+p {
+    text-align: center;
+    font-weight: 1rem;
+}
