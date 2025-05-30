@@ -13,28 +13,25 @@
     <link rel="icon" type="image/vnd.icon" href="Images/favicon-16x16.png">
 </head>
 <body>
-    <header class="header">
+    <header>
         <div class="header-contenu">
-            <div class="titre">EncycloNoMi</div>
+            <div class="titre">EncycloNoMi</div>        
+            <div>
+                <form class="recherche-header" action="encyclopédie.php" method="get"> 
+                    <label for="nom"> Rechercher</label>
+                    <input type="text" name="nom" id="nom" placeholder="Recherche" >
+                </form>
+            </div>
             <nav>
                 <a href="index.php">Accueil</a>
                 <a href="encyclopédie.php">Encyclopédie</a>
                 <a href="aboutme.html">About Me</a>
             </nav>
         </div>
-        <div>
-         <form action="encyclopédie.php" method="get"> 
-            <label for="nom"> Rechercher</label>
-            <input type="text" name="nom" id="nom" >
-            <input type="submit" value="Valider">
-            </form>
-        </div>
+
     </header>
 
     <section>
-        <img src="Images/crocodile.png" alt="">
-        <img src="Images/enel.png" alt="">
-        <img src="Images/smoker.png" alt="">
     </section>
 
     <?php
@@ -60,7 +57,7 @@ if (isset($_GET["nom"]) && !empty($_GET["nom"])) {
 $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 echo '<div class="utilisateur-container">';
 foreach ($result as $row) {
-    echo '<a href="utilisateur.php?id='.$row["id_utilisateur"].'"> <div class="utilisateur"> <h1>'.$row["prenom_utilisateur"].'</h1>
+    echo '<a href="utilisateur.php?id='.$row["id_utilisateur"].'"> <div class="utilisateur"> <h3>'.$row["prenom_utilisateur"].'</h3> <h3>'.$row["nom_utilisateur"].'</h3>
     <img src = "'.$row["image"].'">';   
     echo '</div> </a>';
 }
