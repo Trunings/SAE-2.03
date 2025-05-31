@@ -16,18 +16,16 @@
     <header>
         <div class="header-contenu">
             <div class="titre">EncycloNoMi</div>
+
+            <form class="recherche-header" action="encyclopédie.php" method="get"> 
+                <label for="nom"></label>
+                <input type="text" name="nom" id="nom" placeholder="Recherche">
+            </form>
             <nav>
-                <a href="#section1">Accueil</a>
+                <a href="index.php">Accueil</a>
                 <a href="encyclopédie.php">Encyclopédie</a>
                 <a href="aboutme.html">About Me</a>
             </nav>
-        </div>
-        <div>
-         <form action="encyclopédie.php" method="get"> 
-            <label for="nom"> Rechercher</label>
-            <input type="text" name="nom" id="nom" >
-            <input type="submit" value="Valider">
-            </form>
         </div>
     </header>
     
@@ -87,10 +85,29 @@
         </section>
         
         <section class="encyclopédie">
-            <h2>Explorez notre base de données</h2>
-            <a href="encyclopédie.html">Cliquez ici pour accéder aux fruits du démon</a>
+            <h2>Explorez l'encyclopédie des utilisateurs de fruits du démon</h2>
+            <a href="encyclopédie.php">À l’abordage des pouvoirs !</a>
         </section>
     </main>
+
+    <?php
+ include ("connexion.php");
+ $stmt=$db-> query ('SELECT * FROM utilisateur_fruit 
+                              JOIN fruit_démon ON fruit_démon.id_fruit = utilisateur_fruit.id_fruit
+                              JOIN classe ON classe.id_classe = fruit_démon.id_classe 
+                              ORDER BY id_utilisateur DESC LIMIT 3');
+ $result=$stmt->fetchall();
+ echo '<div class="utilisateur-container" > ';
+foreach ($result as $row) {
+    echo '<a href="utilisateur.php?id='.$row["id_utilisateur"].'"> <div class="utilisateur"> <h3>'.$row["prenom_utilisateur"].'</h3> <h3>'.$row["nom_utilisateur"].'</h3>
+    <img src = "'.$row["image"].'">';   
+    echo '</div> </a>';
+}
+echo '</div>';
+
+
+?>
+
     
     <script src="script.js"></script>
 

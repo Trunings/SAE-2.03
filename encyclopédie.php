@@ -15,20 +15,18 @@
 <body>
     <header>
         <div class="header-contenu">
-            <div class="titre">EncycloNoMi</div>        
-            <div>
-                <form class="recherche-header" action="encyclopédie.php" method="get"> 
-                    <label for="nom"> Rechercher</label>
-                    <input type="text" name="nom" id="nom" placeholder="Recherche" >
-                </form>
-            </div>
+            <div class="titre">EncycloNoMi</div>
+
+            <form class="recherche-header" action="encyclopédie.php" method="get"> 
+                <label for="nom"></label>
+                <input type="text" name="nom" id="nom" placeholder="Recherche">
+            </form>
             <nav>
                 <a href="index.php">Accueil</a>
                 <a href="encyclopédie.php">Encyclopédie</a>
                 <a href="aboutme.html">About Me</a>
             </nav>
         </div>
-
     </header>
 
     <section>

@@ -30,13 +30,12 @@ if (isset($_GET["id"])) {
 }
 
 foreach ($rows as $row) {
-    echo '<h1>' . $row["prenom_utilisateur"] . '</h1>
-          <h1>' . $row["nom_utilisateur"] . '</h1>
+    echo '<h1>' . $row["nom_utilisateur"] . ' ' . $row["prenom_utilisateur"] . '</h1>
           <img src="' . $row["image"] . '">
-          <p>' . $row["pouvoir"] . '</p>
-          <p>' . $row["nom_classe"] . '</p>
-          <p>' . $row["prime"] . '</p>
-          <p>' . $row["nom_role"] . '</p>';
+          <p><strong>Pouvoir : </strong>' . $row["pouvoir"] . '</p>
+          <p><strong>Classe : </strong>' . $row["nom_classe"] . '</p>
+          <p><strong>Prime : </strong>' . $row["prime"] . '</p>
+          <p><strong>Rôle : </strong>' . $row["nom_role"] . '</p>';
     break;
 }
 

@@ -79,7 +79,7 @@ body {
 }
 
 header {
-    position: fixed;
+    position: sticky;
     top: 0;
     left: 0;
     width: 100%;
@@ -87,7 +87,6 @@ header {
     background-color: rgba(0, 0, 0, 0.7);
     z-index: 1000;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(5px);
 }
 
 .header-contenu {
@@ -97,6 +96,7 @@ header {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
+    gap: 70px;
 }
 
 .titre{

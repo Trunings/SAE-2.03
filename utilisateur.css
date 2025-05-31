@@ -1,0 +1,143 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    background: linear-gradient(135deg, #2c3e50, #1a1a1a);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* Style pour les titres h1 */
+h1:first-of-type {
+    color: #ecf0f1;
+    font-size: 2.5em;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+    margin: 15px 0;
+    text-align: center;
+    background-color: black;
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid #95a5a6;
+    animation: fadeIn 0.8s ease-out;
+}
+
+/* Cache le deuxième h1 */
+h1:nth-of-type(2) {
+    display: none;
+}
+
+/* Style pour l'image */
+img {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid #95a5a6;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    display: block;
+    margin: 20px auto;
+    transition: transform 0.3s ease;
+}
+
+img:hover {
+    transform: scale(1.05) rotate(2deg);
+    border-color: #7f8c8d;
+}
+
+/* Style pour les paragraphes */
+p {
+    background: #34495e;
+    color: #ecf0f1;
+    padding: 10px 15px;
+    margin: 8px 0;
+    border-radius: 8px;
+    border-left: 3px solid #95a5a6;
+    font-size: 1.1em;
+    font-weight: 500;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+    transition: transform 0.2s ease;
+}
+
+p:hover {
+    transform: translateX(5px);
+    border-left-color: #7f8c8d;
+}
+
+/* Style pour le titre des sagas */
+h3 {
+    color: #ffffff;
+    font-size: 1.8em;
+    margin: 30px 0 20px 0;
+    text-align: center;
+    text-shadow: 1px 1px 2px rgba(78, 10, 10, 0.7);
+}
+
+/* Style pour la liste des sagas */
+ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px 0;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+li {
+    background: linear-gradient(135deg, #2167ad, #604d8d);
+    padding: 8px 12px;
+    border-radius: 15px;
+    color: #ecf0f1;
+    text-align: center;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+    transition: transform 0.2s ease;
+    font-size: 0.9em;
+    min-width: 120px;
+}
+
+li:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+    border-color: #7f8c8d;
+}
+
+/* Container pour centrer le contenu */
+body > * {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2em;
+        padding: 15px;
+    }
+    
+    img {
+        width: 250px;
+        height: 250px;
+    }
+    
+    ul {
+        grid-template-columns: 1fr;
+    }
+    
+    p {
+        font-size: 1.1em;
+    }
+}
