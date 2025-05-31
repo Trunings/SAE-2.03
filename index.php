@@ -24,6 +24,7 @@
             <nav>
                 <a href="index.php">Accueil</a>
                 <a href="encyclopédie.php">Encyclopédie</a>
+                <a href="formulaire.php">Formulaire</a>
                 <a href="aboutme.html">About Me</a>
             </nav>
         </div>
