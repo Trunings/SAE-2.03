@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>Accueil | EncycloNoMi</title>
     <link rel="stylesheet" href="accueil.css">
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
@@ -16,8 +15,7 @@
     <header>
         <div class="header-contenu">
             <div class="titre">EncycloNoMi</div>
-
-            <form class="recherche-header" action="encyclopédie.php" method="get"> 
+            <form class="recherche-header" action="encyclopédie.php" method="get">
                 <label for="nom"></label>
                 <input type="text" name="nom" id="nom" placeholder="Recherche">
             </form>
@@ -92,27 +90,29 @@
     </main>
 
     <?php
- include ("connexion.php");
- $stmt=$db-> query ('SELECT * FROM utilisateur_fruit 
-                              JOIN fruit_démon ON fruit_démon.id_fruit = utilisateur_fruit.id_fruit
-                              JOIN classe ON classe.id_classe = fruit_démon.id_classe 
-                              ORDER BY id_utilisateur DESC LIMIT 3');
- $result=$stmt->fetchall();
- echo '<div class="utilisateur-container" > ';
-foreach ($result as $row) {
-    echo '<a href="utilisateur.php?id='.$row["id_utilisateur"].'"> <div class="utilisateur"> <h3>'.$row["prenom_utilisateur"].'</h3> <h3>'.$row["nom_utilisateur"].'</h3>
-    <img src = "'.$row["image"].'">';   
-    echo '</div> </a>';
-}
-echo '</div>';
+    include ("connexion.php");
+    $stmt = $db->query('SELECT * FROM utilisateur_fruit 
+                        JOIN fruit_démon ON fruit_démon.id_fruit = utilisateur_fruit.id_fruit
+                        JOIN classe ON classe.id_classe = fruit_démon.id_classe 
+                        ORDER BY id_utilisateur DESC LIMIT 3');
+    $result = $stmt->fetchAll();
 
+    echo '<div class="utilisateur-container">';
+    foreach ($result as $row) {
+        echo '<a href="utilisateur.php?id='.$row["id_utilisateur"].'">
+                <div class="utilisateur">
+                    <h3>'.$row["nom_utilisateur"].' '.$row["prenom_utilisateur"].'</h3>
+                    <img src="'.$row["image"].'" alt="Utilisateur">
+                </div>
+              </a>';
+    }
+    echo '</div>';
+    ?>
 
-?>
-
-    
     <script src="script.js"></script>
 
     <footer>
-        <small>Copyright © 2025 EncycloNoMi.com. Tous droits réservés. </small>
+        <small>Copyright © 2025 EncycloNoMi.com. Tous droits réservés.</small>
     </footer>
 </body>
+</html>
