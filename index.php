@@ -30,7 +30,7 @@
     
     <main>
         <section id="section1" class="section">
-            <img src="Images/Sunny.webp" alt="image arrière-plan du bâteau Sunny">
+            <img src="Images/Sunny.webp" alt="">
             <div class="contenu">
                 <h2>Bienvenue dans l'univers de One Piece</h2>
                 <p>One Piece est une œuvre emblématique du manga japonais, imaginée par Eiichiro Oda en 1997. Depuis sa première publication, elle a captivé des millions de lecteurs et de spectateurs à travers le monde grâce à son univers riche, son humour unique, ses combats épiques et sa grande aventure maritime.</p>
@@ -38,7 +38,7 @@
         </section>
         
         <section class="section">
-            <img src="Images/grandline.webp" alt="image d'arrière-plan de la carte du monde de One Piece">
+            <img src="Images/grandline.webp" alt="">
             <div class="contenu">
                 <h2>Un monde vaste et mystérieux</h2>
                 <p>L'histoire se déroule dans un monde majoritairement composé d'océans. Quatre mers principales — East Blue, West Blue, North Blue et South Blue — entourent la mystérieuse et dangereuse Grand Line, l'axe central de ce monde où se trouvent les îles les plus étranges, les créatures les plus puissantes et les secrets les plus anciens.</p>
@@ -52,7 +52,7 @@
         </section>
         
         <section id="section3" class="section">
-            <img src="Images/GolDRoger.webp" alt="image d'arrière-plan de l'éxécution du célèbre roi des pirates Gol D Roger">
+            <img src="Images/GolDRoger.webp" alt="">
             <div class="contenu">
                 <h2>Le rêve d'un trésor légendaire</h2>
                 <p>Le point de départ de l'histoire est la mort du Roi des Pirates, Gol D. Roger. Avant d'être exécuté, il déclara que son trésor, le One Piece, était caché quelque part dans la Grand Line. Cette annonce déclencha une nouvelle ère de piraterie.
@@ -61,7 +61,7 @@
         </section>
 
         <section id="section4" class="section">
-            <img src="Images/Primeonepiece.webp" alt="image d'arrière-plan d'un tableau des primes de l'équipage du chapeau de paille dans One piece">
+            <img src="Images/Primeonepiece.webp" alt="">
             <div class="contenu">
                 <h2>Les primes dans One piece</h2>
                 <p>Dans l’univers de One Piece, les primes représentent la somme d’argent que le Gouvernement Mondial offre pour la capture, vivante ou morte, d’un individu jugé dangereux. Elles ne reflètent pas seulement la force d’un pirate, mais aussi la menace qu’il représente pour l’ordre mondial.
@@ -70,7 +70,7 @@
         </section>
         
         <section id="section5" class="section">
-            <img src="Images/fruitdudémon.jpg" alt="image d'arrière-plan de beaucoup de fruits du démon de tout les types">
+            <img src="Images/fruitdudémon.jpg" alt="">
             <div class="contenu">
                 <h2>Les Fruits du Démon</h2>
                 <p>Dans cet univers, certaines personnes obtiennent des capacités surnaturelles en mangeant des fruits mystérieux appelés fruits du démon (Akuma no Mi en japonais). Ces fruits sont extrêmement rares et confèrent des pouvoirs très variés — mais ils ont un lourd prix : quiconque en mange perd la capacité de nager, un grand handicap dans un monde où tout se passe en mer.</p>
@@ -85,10 +85,10 @@
         
         <section class="encyclopédie">
             <h2>Explorez l'encyclopédie des utilisateurs de fruits du démon</h2>
-            <a href="encyclopédie.php">À l’abordage des pouvoirs !</a>
+            <a href="encyclopédie.php">Accédez à l'enyclopédie !</a>
         </section>
+            <h2 id="actualité">Actualité des derniers utilisateurs ajoutés</h2>
     </main>
-
     <?php
     include ("connexion.php");
     $stmt = $db->query('SELECT * FROM utilisateur_fruit 

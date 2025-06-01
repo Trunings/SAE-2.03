@@ -2,6 +2,10 @@
     include ("connexion.php");
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
+    //classe
+
+    $id_classe = $_POST["classe"];
+
         //fruit 
 
 $stmt = $db->prepare(
@@ -17,55 +21,26 @@ if ($fruit) {
 
 else {
     $stmt = $db->prepare(
-        "INSERT INTO fruit_démon (`pouvoir`)
-         VALUES (?)" );
-    $stmt->execute([ $_POST["pouvoir"]]);
+        "INSERT INTO fruit_démon (`pouvoir`, id_classe)
+         VALUES (?, ?)" );
+    $stmt->execute([ $_POST["pouvoir"], $id_classe]);
 
     $id_fruit = $db->lastInsertId(); } 
 
-    //classe
 
-    $id_classe = $_POST["classe"];
-$stmt = $db->prepare(
-    "SELECT id_classe FROM classe
-    WHERE nom_classe = ? ");
-
-$stmt->execute([ $_POST["nom_classe"]]);
-$classe = $stmt->fetch(PDO::FETCH_ASSOC);
-
-if ($classe) {
-   
-    $id_classe = $classe["id_classe"];}
-
-else {
-    $stmt = $db->prepare(
-        "INSERT INTO classe (`nom_classe`)
-         VALUES (?)" );
-    $stmt->execute([ $_POST["nom_classe"]]);
-
-    $id_classe = $db->lastInsertId(); }
 
     //rôle
 
     $id_role = $_POST["role"];
-    $stmt = $db->prepare(
-    "SELECT id_role FROM `role`
-    WHERE nom_role = ? ");
 
-$stmt->execute([ $_POST["nom_role"]]);
-$role = $stmt->fetch(PDO::FETCH_ASSOC);
+    //image
 
-if ($role) {
-   
-    $id_role = $role["id_role"];}
-
-else {
-    $stmt = $db->prepare(
-        "INSERT INTO `role` (`nom_role`)
-         VALUES (?)" );
-    $stmt->execute([ $_POST["nom_role"]]);
-
-    $id_role = $db->lastInsertId(); }
+    if (isset($_FILES['file'])) {
+        $tmpName = $_FILES['file']['tmp_name'];
+        $name = $_FILES['file']['name'];
+        move_uploaded_file($tmpName, 'Images/utilisateur/' . $name);
+    }
+    $image = 'Images/utilisateur/' . $name;
 
     //tableau principale
 
@@ -79,12 +54,28 @@ else {
 
     else {
    
-        $stmt = $db->prepare("INSERT INTO utilisateur_fruit (nom_utilisateur,prenom_utilisateur, id_role , id_fruit, prime) VALUES (?, ?, ?, ?, ?)");
-        $stmt->execute([$_POST["nom"], $_POST["prenom"], $id_role, $id_classe, $id_fruit, $_POST["prime"]]);
+        $stmt = $db->prepare("INSERT INTO utilisateur_fruit (nom_utilisateur,prenom_utilisateur, id_role , id_fruit, prime, `image`) VALUES (?, ?, ?, ?, ?, ?)");
+        $stmt->execute([$_POST["nom"], $_POST["prenom"], $id_role, $id_fruit, $_POST["prime"], $image]);
      
    $id_utilisateur = $db->lastInsertId();
         echo"L'utilisateur a bien été ajouter";}
 
+
+
+    //saga
+
+     if (!empty($_POST['sagas'])) {
+        $sagas = $_POST['sagas'];
+
+        foreach ($sagas as $saga) {
+            $stmt = $db->prepare("INSERT INTO utilisateur_saga (id_saga, id_utilisateur) VALUES (?, ?)");
+            $stmt->execute([$saga, $id_utilisateur]);
+        }
+
+        echo "Options enregistrées.";
+    } else {
+        echo "Aucune option cochée.";
+    }
 }
     ?>
 <!DOCTYPE html>
@@ -150,8 +141,8 @@ else {
         <input type="number" name="prime" id="prime">
 
     <?php
-    echo '<br><label for="rôle">Rôle de l\'utilisateur : </label>
-          <select name="rôle" id="rôle">';
+    echo '<br><label for="role">Rôle de l\'utilisateur : </label>
+          <select name="role" id="role">';
 
     $stmt = $db->query('SELECT * FROM `role`');
     $result = $stmt->fetchAll();

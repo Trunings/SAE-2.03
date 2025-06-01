@@ -29,7 +29,31 @@
         </div>
     </header>
 
-    <section>
+ <section>
+        <label for="tri-prenom">Trier par prénom :</label>
+        <select id="tri-prenom">
+            <option value="prenom_asc">A-Z</option>
+            <option value="prenom_desc">Z-A</option>
+        </select>
+
+        <label for="filtre-fruit">Type de fruit :</label>
+        <select id="filtre-fruit">
+            <option value="">Tous</option>
+            <option value="Logia">Logia</option>
+            <option value="Paramecia">Paramecia</option>
+            <option value="Zoan naturel">Zoan naturel</option>
+            <option value="Zoan mythique">Zoan mythique</option>
+            <option value="Zoan antique">Zoan antique</option>
+        </select>
+
+        <label for="filtre-role">Rôle :</label>
+        <select id="filtre-role">
+            <option value="">Toutes</option>
+            <option value="Pirate">Pirate</option>
+            <option value="Marine">Marine</option>
+            <option value="Revolutionnaire">Révolutionnaire</option>
+            <option value="Gouvernement">Gouvernement</option>
+        </select>
     </section>
 
     <?php
@@ -49,19 +73,28 @@ if (isset($_GET["nom"]) && !empty($_GET["nom"])) {
     $stmt->bindValue(':search', '%' . $search . '%', PDO::PARAM_STR);
     $stmt->execute();
 } else {
-    $stmt = $db->query("SELECT * FROM utilisateur_fruit");
+    $stmt = $db->query("
+        SELECT utilisateur_fruit.*, fruit_démon.*, classe.nom_classe, role.nom_role
+        FROM utilisateur_fruit
+        JOIN fruit_démon ON utilisateur_fruit.id_fruit = fruit_démon.id_fruit
+        JOIN classe ON fruit_démon.id_classe = classe.id_classe
+        JOIN role ON utilisateur_fruit.id_role = role.id_role
+    ");
 }
 
 $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 echo '<div class="utilisateur-container">';
 foreach ($result as $row) {
-    echo '<a href="utilisateur.php?id='.$row["id_utilisateur"].'"> <div class="utilisateur"> <h3>'.$row["prenom_utilisateur"].'</h3> <h3>'.$row["nom_utilisateur"].'</h3>
-    <img src = "'.$row["image"].'">';   
-    echo '</div> </a>';
+echo '<div class="utilisateur" data-classe="'.$row["nom_classe"].'" data-role="'.$row["nom_role"].'">';
+echo '<a href="utilisateur.php?id='.$row["id_utilisateur"].'">';
+echo '<h3>'.$row["prenom_utilisateur"].'</h3><h3>'.$row["nom_utilisateur"].'</h3>';
+echo '<img src="'.$row["image"].'" alt="image utilisateur">';
+echo '</a></div>';  
 }
 echo '</div>';
 ?>
     <footer>
         <small>Copyright © 2025 EncycloNoMi.com. Tous droits réservés.</small>
     </footer>
+    <script src="trie.js"></script>
 </body>

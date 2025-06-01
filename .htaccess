@@ -1,0 +1,7 @@
+<Files "formulaire.php">
+	ErrorDocument 401 "Authorisation Required"
+	AuthType Basic
+	AuthName "Formulaire privé"
+	AuthUserFile C:\wamp64\www\SAE_2.03\.htpasswd
+	Require valid-user
+</Files>

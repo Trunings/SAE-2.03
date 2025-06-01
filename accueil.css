@@ -179,22 +179,46 @@ header nav a:hover:after {
 }
 
 .encyclopédie a {
+    position: relative;
     display: inline-block;
-    background-color: #64b5f6;
-    color: #1a1a2e;
-    padding: 15px 30px;
-    border-radius: 5px;
     font-family: 'Montserrat', sans-serif;
     font-size: 1.5rem;
+    color: white;
     text-decoration: none;
+    padding: 15px 30px;
+    background-color: #111;
+    border: 2px solid #64b5f6;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
     transition: all 0.3s ease;
-    margin-top: 20px;
+}
+
+.encyclopédie a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: #64b5f6;
+    bottom: 10px;
+    left: 15px;
+    transition: width 0.3s ease;
 }
 
 .encyclopédie a:hover {
-    background-color: #90caf9;
+    color: #64b5f6;
     transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 10px 25px rgba(100, 181, 246, 0.4);
+}
+
+.encyclopédie a:hover::after {
+    width: calc(100% - 30px);
+}
+
+#actualité {
+    background-color: #1a1a2e;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2rem;
+    text-align: center;
 }
 
 .utilisateur-container {
