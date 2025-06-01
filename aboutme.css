@@ -12,14 +12,25 @@ body {
     overflow-x: hidden;
 }
 
+main {
+    margin-top: 30px;
+}
+
+p {
+    text-align: center;
+    font-weight: 1rem;
+}
+
 header {
     position: sticky;
     top: 0;
     left: 0;
     width: 100%;
-    padding: 20px;
-    background-color: rgb(0, 0, 0);
+    padding: 10px 0;
+    background-color: rgba(0, 0, 0, 0.7);
     z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(6px);
 }
 
 .header-contenu {
@@ -29,32 +40,33 @@ header {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
+    flex-wrap: wrap;
+    gap: 30px;
 }
 
-.titre{
+.titre {
     margin-right: auto;
     color: #fff;
     text-transform: uppercase;
     font-family: "Permanent Marker", cursive;
-    font-weight: 400;
-    font-size: 1.8rem;
-    letter-spacing: 2px;
+    font-size: 1.5rem;
     text-shadow: 0 0 10px rgba(4, 142, 255, 0.7);
 }
 
 header nav {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 header nav a {
     font-family: 'Montserrat', sans-serif;
     color: white;
     text-decoration: none;
-    margin: 0 25px;
-    font-size: 1.2rem;
-    transition: all 0.3s ease;
+    margin: 0 12px;
+    font-size: 1.1rem;
     font-weight: 600;
+    white-space: nowrap;
     letter-spacing: 1px;
     padding: 5px 0;
     position: relative;
@@ -84,14 +96,8 @@ header nav a:hover:after {
     background: white;
     border-radius: 50px;
     padding: 1px 14px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
     border: 1px solid #e0e0e0;
-    transition: all 0.3s ease;
-    min-width: 300px;
-}
-
-.recherche-header label {
-    display: none;
+    max-width: 250px;
 }
 
 .recherche-header input[type="text"] {
@@ -100,30 +106,47 @@ header nav a:hover:after {
     padding: 8px 12px;
     font-size: 1rem;
     outline: none;
-    flex: 1;
+    color: #333;
+    width: 100%;
+}
+
+.recherche-header input::placeholder {
+    color: #626569;
+}
+
+.about-container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+    font-size: 1rem;
+    line-height: 1.6;
     color: #333;
 }
 
-.recherche-header input[type="text"]::placeholder {
-    color: #626569;
-    font-size: 1rem;
+.about-container h1 {
+    font-family: "Berkshire Swash", sans-serif;
+    text-align: center;
+    font-size: 2.2rem;
+    margin-bottom: 30px;
 }
 
-.recherche-header input[type="submit"] {
-    display: none;
+.about-container h2 {
+    font-family: "DynaPuff", sans-serif;
+    font-size: 1.4rem;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    color: #1976d2;
+    border-bottom: 2px solid #64b5f6;
+    padding-bottom: 5px;
+}
+
+.about-container p {
+    margin-bottom: 20px;
+    text-align: justify;
 }
 
 footer {
     text-align: center;
-    color: #000000;
-}
-
-
-main {
-    margin-top: 30px;
-}
-
-p {
-    text-align: center;
-    font-weight: 1rem;
+    color: #fff;
+    padding: 20px 0;
 }

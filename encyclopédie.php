@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -24,6 +23,7 @@
             <nav>
                 <a href="index.php">Accueil</a>
                 <a href="encyclopédie.php">Encyclopédie</a>
+                <a href="formulaire.php">Formulaire</a>
                 <a href="aboutme.html">About Me</a>
             </nav>
         </div>
@@ -61,4 +61,7 @@ foreach ($result as $row) {
 }
 echo '</div>';
 ?>
+    <footer>
+        <small>Copyright © 2025 EncycloNoMi.com. Tous droits réservés.</small>
+    </footer>
 </body>

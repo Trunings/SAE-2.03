@@ -88,13 +88,35 @@ else {
 }
     ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulaire | EncycloNoMi</title>
+    <title>Encyclopédie | EncycloNoMi</title>
+    <link rel="stylesheet" href="formulaire.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/vnd.icon" href="Images/favicon-16x16.png">
 </head>
 <body>
+    <header>
+        <div class="header-contenu">
+            <div class="titre">EncycloNoMi</div>
+
+            <form class="recherche-header" action="encyclopédie.php" method="get"> 
+                <label for="nom"></label>
+                <input type="text" name="nom" id="nom" placeholder="Recherche">
+            </form>
+            <nav>
+                <a href="index.php">Accueil</a>
+                <a href="encyclopédie.php">Encyclopédie</a>
+                <a href="formulaire.php">Formulaire</a>
+                <a href="aboutme.html">About Me</a>
+            </nav>
+        </div>
+    </header>
     <form action="formulaire.php" method="post" enctype= "multipart/form-data">
 
         <label for="nom">Nom de l'utilisateur : </label>
@@ -155,5 +177,9 @@ else {
 }    
 ?>
     <input type="submit" name="bouton" id="bouton">
+    
+    <footer>
+        <small>Copyright © 2025 EncycloNoMi.com. Tous droits réservés.</small>
+    </footer>
 </body> 
 </html>
