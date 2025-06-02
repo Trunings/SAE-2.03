@@ -168,7 +168,7 @@ header nav a:hover:after {
 }
 
 .parallax-bg.darkened {
-    filter: brightness(0.4);
+    filter: brightness(0.2);
     transition: filter 1s ease;
 }
 
