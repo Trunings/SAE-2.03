@@ -106,6 +106,46 @@ header nav a:hover:after {
     color: #626569;
 }
 
+section {
+    background-color: #111;
+    padding: 20px;
+    margin: 30px auto;
+    max-width: 1000px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(100, 181, 246, 0.2);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+}
+
+section label {
+    font-weight: 600;
+    margin-right: 10px;
+    font-size: 1rem;
+    color: #64b5f6;
+}
+
+section select {
+    background-color: #1c1c1c;
+    color: #fff;
+    border: 1px solid #64b5f6;
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 1rem;
+    font-family: 'Montserrat', sans-serif;
+    transition: border 0.3s, box-shadow 0.3s;
+}
+
+section select:focus {
+    outline: none;
+    border-color: #90caf9;
+    box-shadow: 0 0 5px rgba(144, 202, 249, 0.5);
+}
+
 .utilisateur-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -162,6 +202,15 @@ header nav a:hover:after {
 
     .utilisateur {
         max-width: 90%;
+    }
+
+    section {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    section label, section select {
+        width: 100%;
     }
 }
 

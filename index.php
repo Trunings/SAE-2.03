@@ -85,15 +85,15 @@
         
         <section class="encyclopédie">
             <h2>Explorez l'encyclopédie des utilisateurs de fruits du démon</h2>
-            <a href="encyclopédie.php">Accédez à l'enyclopédie !</a>
+            <a href="encyclopédie.php">Accédez à l'encyclopédie !</a>
         </section>
             <h2 id="actualité">Actualité des derniers utilisateurs ajoutés</h2>
     </main>
     <?php
     include ("connexion.php");
     $stmt = $db->query('SELECT * FROM utilisateur_fruit 
-                        JOIN fruit_démon ON fruit_démon.id_fruit = utilisateur_fruit.id_fruit
-                        JOIN classe ON classe.id_classe = fruit_démon.id_classe 
+                        JOIN fruit_demon ON fruit_demon.id_fruit = utilisateur_fruit.id_fruit
+                        JOIN classe ON classe.id_classe = fruit_demon.id_classe 
                         ORDER BY id_utilisateur DESC LIMIT 3');
     $result = $stmt->fetchAll();
 
@@ -112,7 +112,7 @@
     <script src="script.js"></script>
 
     <footer>
-        <small>Copyright © 2025 EncycloNoMi.com. Tous droits réservés.</small>
+        <small>Copyright © 2025 EncycloNoMi.com. Tous droits réservés - Alexis Charpentier</small>
     </footer>
 </body>
 </html>

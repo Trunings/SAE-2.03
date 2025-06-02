@@ -15,8 +15,8 @@ if (isset($_GET["id"])) {
 
     $join_query = "SELECT * FROM 
                         utilisateur_fruit 
-                        JOIN fruit_démon ON fruit_démon.id_fruit = utilisateur_fruit.id_fruit
-                        JOIN classe ON classe.id_classe = fruit_démon.id_classe 
+                        JOIN fruit_demon ON fruit_demon.id_fruit = utilisateur_fruit.id_fruit
+                        JOIN classe ON classe.id_classe = fruit_demon.id_classe 
                         JOIN role ON role.id_role = utilisateur_fruit.id_role
                         JOIN utilisateur_saga ON utilisateur_saga.id_utilisateur = utilisateur_fruit.id_utilisateur
                         JOIN saga_apparition ON saga_apparition.id_saga = utilisateur_saga.id_saga

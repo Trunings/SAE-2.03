@@ -9,7 +9,7 @@
         //fruit 
 
 $stmt = $db->prepare(
-    "SELECT id_fruit FROM fruit_démon
+    "SELECT id_fruit FROM fruit_demon
     WHERE pouvoir = ? ");
 
 $stmt->execute([ $_POST["pouvoir"]]);
@@ -21,7 +21,7 @@ if ($fruit) {
 
 else {
     $stmt = $db->prepare(
-        "INSERT INTO fruit_démon (`pouvoir`, id_classe)
+        "INSERT INTO fruit_demon (`pouvoir`, id_classe)
          VALUES (?, ?)" );
     $stmt->execute([ $_POST["pouvoir"], $id_classe]);
 
@@ -89,6 +89,9 @@ else {
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=DynaPuff:wght@400..700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/vnd.icon" href="Images/favicon-16x16.png">
 </head>
 <body>
@@ -108,69 +111,78 @@ else {
             </nav>
         </div>
     </header>
-    <form action="formulaire.php" method="post" enctype= "multipart/form-data">
+    <main class="form-container">
+    <h1>Ajouter un utilisateur</h1>
+    <form action="formulaire.php" method="post" enctype="multipart/form-data" class="formulaire-utilisateur">
+        <div class="form-group">
+            <label for="nom">Nom :</label>
+            <input type="text" name="nom" id="nom">
+        </div>
 
-        <label for="nom">Nom de l'utilisateur : </label>
-        <input type="text" name="nom" id="nom">
+        <div class="form-group">
+            <label for="prenom">Prénom <span aria-hidden="true">*</span> :</label>
+            <input type="text" name="prenom" id="prenom" required>
+        </div>
 
-        <br>
-        <label for="prenom">Prénom de l'utilisateur : </label>
-        <input type="text" name="prenom" id="prenom">
+        <div class="form-group">
+            <label for="file">Image :</label>
+            <input type="file" name="file" id="file" aria-describedby="file-help" required>
+            <small id="file-help">Format recommandé : 640 x 512</small>
+        </div>
 
-        <br>
-        <label for="file">Image</label>
-        <input type="file" name="file" required>
+        <div class="form-group">
+            <label for="pouvoir">Pouvoir <span aria-hidden="true">*</span> :</label>
+            <input type="text" name="pouvoir" id="pouvoir" required aria-describedby="pouvoir-help">
+            <small id="pouvoir-help">Décris le pouvoir du fruit du démon (ex : fruit du vent)</small>
+        </div>
 
-        <br>
-        <label for="pouvoir">Pouvoir de l'utilisateur : </label>
-        <input type="text" name="pouvoir" id="pouvoir">
-        
-    <?php
-    echo '<br><label for="classe">Classe de l\'utilisateur : </label>
-          <select name="classe" id="classe">';
+        <div class="form-group">
+            <label for="classe">Classe :</label>
+            <select name="classe" id="classe">
+                <?php
+                $stmt = $db->query('SELECT * FROM classe');
+                foreach ($stmt->fetchAll() as $row) {
+                    echo '<option value="' . $row["id_classe"] . '">' . $row["nom_classe"] . '</option>';
+                }
+                ?>
+            </select>
+        </div>
 
-    $stmt = $db->query('SELECT * FROM classe');
-    $result = $stmt->fetchAll();
-    foreach ($result as $row) {
-    echo '<option value="' . $row["id_classe"] . '">' . $row["nom_classe"] . '</option>';
-    }
-    echo '</select>';
-    ?>
-        <br>
-        <label for="prime">prime de l'utilisateur : </label>
-        <input type="number" name="prime" id="prime">
+        <div class="form-group">
+            <label for="prime">Prime :</label>
+            <input type="number" name="prime" id="prime">
+        </div>
 
-    <?php
-    echo '<br><label for="role">Rôle de l\'utilisateur : </label>
-          <select name="role" id="role">';
+        <div class="form-group">
+            <label for="role">Rôle :</label>
+            <select name="role" id="role">
+                <?php
+                $stmt = $db->query('SELECT * FROM `role`');
+                foreach ($stmt->fetchAll() as $row) {
+                    echo '<option value="' . $row["id_role"] . '">' . $row["nom_role"] . '</option>';
+                }
+                ?>
+            </select>
+        </div>
 
-    $stmt = $db->query('SELECT * FROM `role`');
-    $result = $stmt->fetchAll();
+        <fieldset class="form-group sagas">
+            <legend>Sagas d'apparition :</legend>
+            <?php
+            $stmt = $db->query('SELECT * FROM saga_apparition');
+            foreach ($stmt->fetchAll() as $row) {
+                echo '<label><input type="checkbox" name="sagas[]" value="' . $row['id_saga'] . '"> ' . $row['nom_saga'] . '</label>';
+            }
+            ?>
+        </fieldset>
 
-    foreach ($result as $row) {
-    echo '<option value="' . $row["id_role"] . '">' . $row["nom_role"] . '</option>';
-    }
-
-    echo '</select>';
-    ?>
-
-    <?php
-    $stmt = $db->query('SELECT * FROM saga_apparition');
-    $result = $stmt->fetchAll();
-
-    echo '<p><strong>Sagas d\'apparition de l\'utilisateur :</strong></p>';
-
-    foreach ($result as $row) {
-    echo '<label>';
-    echo '<input type="checkbox" name="sagas[]" value="' . $row['id_saga'] . '">';
-    echo ' ' . ($row['nom_saga']);
-    echo '</label><br>';
-}    
-?>
-    <input type="submit" name="bouton" id="bouton">
+        <div class="form-group">
+            <input type="submit" name="bouton" value="Ajouter l'utilisateur" class="submit-btn">
+        </div>
+    </form>
+</main>
     
     <footer>
-        <small>Copyright © 2025 EncycloNoMi.com. Tous droits réservés.</small>
+        <small>Copyright © 2025 EncycloNoMi.com. Tous droits réservés - Alexis Charpentier</small>
     </footer>
 </body> 
 </html>

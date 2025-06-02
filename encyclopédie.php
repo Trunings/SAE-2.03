@@ -63,8 +63,8 @@ if (isset($_GET["nom"]) && !empty($_GET["nom"])) {
 
     $join_query = "SELECT * 
         FROM utilisateur_fruit 
-        JOIN fruit_démon ON fruit_démon.id_fruit = utilisateur_fruit.id_fruit
-        JOIN classe ON classe.id_classe = fruit_démon.id_classe 
+        JOIN fruit_demon ON fruit_demon.id_fruit = utilisateur_fruit.id_fruit
+        JOIN classe ON classe.id_classe = fruit_demon.id_classe 
         WHERE 
             prenom_utilisateur LIKE :search 
             OR nom_classe LIKE :search";
@@ -74,10 +74,10 @@ if (isset($_GET["nom"]) && !empty($_GET["nom"])) {
     $stmt->execute();
 } else {
     $stmt = $db->query("
-        SELECT utilisateur_fruit.*, fruit_démon.*, classe.nom_classe, role.nom_role
+        SELECT utilisateur_fruit.*, fruit_demon.*, classe.nom_classe, role.nom_role
         FROM utilisateur_fruit
-        JOIN fruit_démon ON utilisateur_fruit.id_fruit = fruit_démon.id_fruit
-        JOIN classe ON fruit_démon.id_classe = classe.id_classe
+        JOIN fruit_demon ON utilisateur_fruit.id_fruit = fruit_demon.id_fruit
+        JOIN classe ON fruit_demon.id_classe = classe.id_classe
         JOIN role ON utilisateur_fruit.id_role = role.id_role
     ");
 }
@@ -94,7 +94,7 @@ echo '</a></div>';
 echo '</div>';
 ?>
     <footer>
-        <small>Copyright © 2025 EncycloNoMi.com. Tous droits réservés.</small>
+        <small>Copyright © 2025 EncycloNoMi.com. Tous droits réservés - Alexis Charpentier</small>
     </footer>
     <script src="trie.js"></script>
 </body>
