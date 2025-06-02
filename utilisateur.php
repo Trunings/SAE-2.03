@@ -6,6 +6,9 @@
     <title>Document</title>
     <link rel="stylesheet" href="utilisateur.css"> 
 </head>
+<div class="retour-wrapper">
+  <a href="encyclopédie.php" class="btn-retour">← Retour</a>
+</div>
 <body>    
 <?php
 include("connexion.php");

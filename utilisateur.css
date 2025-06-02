@@ -4,6 +4,30 @@
     box-sizing: border-box;
 }
 
+.retour-wrapper {
+    max-width: 800px;
+    margin: 0 auto 20px auto;
+    text-align: left;
+}
+
+.btn-retour {
+    background: linear-gradient(135deg, #548d82, #238f79);
+    color: white;
+    padding: 8px 20px;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    display: inline-block;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn-retour:hover {
+    background: linear-gradient(135deg, #16a085, #1abc9c);
+    transform: scale(1.05);
+}
+
 body {
     font-family: 'Arial', sans-serif;
     line-height: 1.6;
